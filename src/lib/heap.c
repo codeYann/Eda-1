@@ -15,10 +15,10 @@ int RightChildren(int index) {
 }
 
 Heap *CreateHeap(int capacity) {
-  Heap *heap = (Heap *)malloc(sizeof(Heap));
+  Heap *heap = (Heap*) malloc(sizeof(Heap));
   heap->length = 0;
   heap->capacity = capacity;
-  heap->list = (int *)malloc(capacity * sizeof(int));
+  heap->list = (int*) malloc(capacity * sizeof(int));
   return heap;
 }
 
@@ -51,11 +51,12 @@ void maxHeapifyDown(Heap *heap, int index) {
       int temp = heap->list[index];
       heap->list[index] = heap->list[j];
       heap->list[j] = temp;
+
       index = j;
       left = LeftChildren(index); 
       right = LeftChildren(index);
     } else {
-      return;
+      break;
     }
   }
 }
@@ -83,4 +84,17 @@ int Remove(Heap* heap) {
   } else {
     return 0;
   } 
+}
+
+Heap* Heapify(int* array, int n) {
+  Heap* heap = malloc(sizeof(Heap));
+  heap->capacity = 3*n;
+  heap->length = n - 1;
+  heap->list = array;
+
+  for(int i = n/2; i >= 0; i--) {
+    maxHeapifyDown(heap, i);
+  }
+
+  return heap;
 }
