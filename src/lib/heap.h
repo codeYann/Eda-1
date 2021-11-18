@@ -12,5 +12,6 @@ void maxHeapifyUp(Heap *heap, int index);
 void maxHeapifyDown(Heap *heap, int index);
 void Insert(Heap* heap, int element);
 int Remove(Heap* heap);
+Heap* Heapify(int* array, int n);
 
 #endif
