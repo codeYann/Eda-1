@@ -24,9 +24,8 @@ Heap *CreateHeap(int capacity) {
 
 void maxHeapifyUp(Heap *heap, int index) {
   int parent = GetParent(index);
-  int temp = 0;
   if (heap->list[index] > heap->list[parent]) {
-    temp = heap->list[index];
+    int temp = heap->list[index];
     heap->list[index] = heap->list[parent];
     heap->list[parent] = temp;
     maxHeapifyUp(heap, parent);
@@ -34,56 +33,48 @@ void maxHeapifyUp(Heap *heap, int index) {
 }
 
 void maxHeapifyDown(Heap *heap, int index) {
-  int l = heap->length;
-  int j;
-  int left = LeftChildren(index), right = RightChildren(index);
+  int left = LeftChildren(index);
+  int right = RightChildren(index);
+  int  j = index;
 
-  while(left <= l) {
-    if(left == l) {
-      j = left;
-    } else if(heap->list[left] > heap->list[index]) {
-      j = left;
-    } else {
-      j = right;
-    }
+  if(left <= heap->length && heap->list[right] < heap->list[left]) {
+    j = left;
+  } 
 
-    if(heap->list[index] < heap->list[j]) {
-      int temp = heap->list[index];
-      heap->list[index] = heap->list[j];
-      heap->list[j] = temp;
+  if(right <= heap->length && heap->list[left] < heap->list[right]) {
+    j = right;
+  }
 
-      index = j;
-      left = LeftChildren(index); 
-      right = LeftChildren(index);
-    } else {
-      break;
-    }
+  if(j == index) return;
+    
+  if(heap->list[index] < heap->list[j]) {
+    int temp = heap->list[index];
+    heap->list[index] = heap->list[j];
+    heap->list[j] = temp;
+    maxHeapifyDown(heap, j);
   }
 }
 
 
 void Insert(Heap* heap, int element) {
-  if(heap->length < heap->capacity) {
-    if(heap->length == 0) {
-      heap->list[0] = element;
-    } else {
-      heap->list[heap->length] = element;
-      maxHeapifyUp(heap, heap->length);
-    } 
+  if(heap->length < heap->capacity) { 
+    heap->list[heap->length] = element;
+    maxHeapifyUp(heap, heap->length);
     heap->length += 1;
   }
 }
 
 int Remove(Heap* heap) {
-  if(heap->length >= 1) { 
-    int aux = heap->list[0];
-    heap->list[0] = heap->list[heap->length - 1];
-    heap->length -= 1;
+  if(heap->length > 0) {
+    int n = heap->length;
+    int max = heap->list[0];
+    heap->list[0] = heap->list[n];
+    heap->length--;
     maxHeapifyDown(heap, 0);
-    return aux;
+    return max;
   } else {
-    return 0;
-  } 
+    return -1;
+  }
 }
 
 Heap* Heapify(int* array, int n) {
