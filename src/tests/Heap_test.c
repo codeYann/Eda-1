@@ -53,7 +53,7 @@ void TestHeapify() {
     printf(" %d ", array[i]);
   }
 
-  Heap* a = Heapify(array, 9);
+  Heap* a = Heapify(array, HEAPIFY_LENGTH);
   
   printf("\nHeap: ");
   for(int i = 0; i <= a->length; i++) {
