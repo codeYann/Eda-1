@@ -6,22 +6,22 @@
 
 void TestInsert() {
   Heap* h = CreateHeap(10);
-  int list[] = {4, 2, 5, 1, 3, 6};
+  unsigned long list[] = {4, 2, 5, 1, 3, 6};
 
   printf("List: ");
-  for(int i = 0; i < INSERT_LENGTH; i++) {
-    printf(" %d ", list[i]);
+  for(unsigned long i = 0; i < INSERT_LENGTH; i++) {
+    printf(" %lu ", list[i]);
     Insert(h, list[i]);
   }
   
   printf("\nHeap: ");
-  for(int i = 0; i < h->length; i++){
-    printf(" %d ", h->list[i]);
+  for(unsigned long i = 1; i <= h->length; i++){
+    printf(" %lu ", h->list[i]);
   }
 }
 
 void TestRemove() {
-  Heap* h = CreateHeap(10);
+  Heap* h = CreateHeap(15);
   Insert(h, 33); 
   Insert(h, 39);
   Insert(h, 78);
@@ -30,34 +30,37 @@ void TestRemove() {
   Insert(h, 66);
   Insert(h, 28);
   Insert(h, 70);
+  Insert(h, 11);
+  Insert(h, 35);
+  Insert(h, 14);
   
   printf("Heap: ");
-  for(int i = 0; i < h->length; i++) {
-    printf(" %d ", h->list[i]);
+  for(unsigned long i = 1; i <= h->length; i++) {
+    printf(" %lu ", h->list[i]);
   }
 
   printf("\n");
   Remove(h);
   
   printf("Heap: ");
-  for(int i = 0; i < h->length; i++) {
-    printf(" %d ", h->list[i]);
+  for(unsigned long i = 1; i < h->length; i++) {
+    printf(" %lu ", h->list[i]);
   }
 }
 
 void TestHeapify() {
-  int array[] = {4, 7, 3, 10, 2, 15, 1, 9, 6};
+  unsigned long array[] = {4, 7, 3, 10, 2, 15, 1, 9, 6};
 
   printf("List: ");
-  for(int i = 0; i < HEAPIFY_LENGTH; i++) {
-    printf(" %d ", array[i]);
+  for(unsigned long i = 0; i < HEAPIFY_LENGTH; i++) {
+    printf(" %lu ", array[i]);
   }
 
   Heap* a = Heapify(array, HEAPIFY_LENGTH);
   
   printf("\nHeap: ");
-  for(int i = 0; i <= a->length; i++) {
-    printf(" %d ", a->list[i]);
+  for(unsigned long i = 1; i <= HEAPIFY_LENGTH; i++) {
+    printf(" %lu ", a->list[i]);
   }
 
 }
