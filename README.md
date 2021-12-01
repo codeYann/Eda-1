@@ -8,10 +8,11 @@ O trabalho consiste em um conjunto de implmentações de algoritmos, assim como,
 
 ## Implementações
 
-| Nome                                                | Status |
-| --------------------------------------------------- | ------ |
-| [Heap](https://www.youtube.com/watch?v=jrTMMG0zJyI) | Ok     |
-| [DFS](https://www.youtube.com/watch?v=jrTMMG0zJyI)  | Ok     |
+| Nome                                                                             | Status |
+| -------------------------------------------------------------------------------- | ------ |
+| [Heap](https://github.com/codeYann/Eda-1/blob/main/src/lib/heap.c)               | Ok     |
+| [HeapSort](https://github.com/codeYann/Eda-1/blob/main/src/lib/heapSort.c)       | Ok     |
+| [InsertionSort](https://github.com/codeYann/Eda-1/blob/main/src/lib/insertion.c) | Ok     |
 
 ## License
 
