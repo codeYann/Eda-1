@@ -3,15 +3,15 @@
 #include <stdio.h>
 
 
-int* HeapSort(int *list, int n) {
+unsigned long* HeapSort(unsigned long* list, unsigned long n) {
   Heap* A = Heapify(list, n);
 
-  for(int i = A->length; i >= 1; i--) {
-    int temp = A->list[0];
-    A->list[0] = A->list[i];
+  for(unsigned long i = A->length; i >= 1; i--) {
+    unsigned long temp = A->list[1];
+    A->list[1] = A->list[i];
     A->list[i] = temp;
     A->length -= 1;
-    maxHeapifyDown(A, 0);
+    maxHeapifyDown(A, 1);
   }
   return A->list;
 }
