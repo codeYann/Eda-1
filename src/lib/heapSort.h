@@ -1,6 +1,6 @@
 #ifndef HEAPSORT
 #define HEAPSORT
 
-int* HeapSort(int* list, int n);
+unsigned long* HeapSort(unsigned long* list, unsigned long n);
 
 #endif 
