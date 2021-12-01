@@ -2,16 +2,16 @@
 #define HEAP
 
 typedef struct {
-  int *list;
-  int capacity;
-  int length;
+  unsigned long *list;
+  unsigned long capacity;
+  unsigned long length;
 } Heap;
 
-Heap *CreateHeap(int capacity);
-void maxHeapifyUp(Heap *heap, int index);
-void maxHeapifyDown(Heap *heap, int index);
-void Insert(Heap* heap, int element);
-int Remove(Heap* heap);
-Heap* Heapify(int* array, int n);
+Heap *CreateHeap(unsigned long capacity);
+void maxHeapifyUp(Heap *heap, unsigned long index);
+void maxHeapifyDown(Heap *heap, unsigned long index);
+void Insert(Heap* heap, unsigned long element);
+unsigned long Remove(Heap* heap);
+Heap* Heapify(unsigned long* array, unsigned long n);
 
 #endif
