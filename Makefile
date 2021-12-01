@@ -16,10 +16,8 @@ HeapSort:
 	$(CC) $(SOURCE_DIR)/tests/HeapSort_test.c  $(SOURCE_C) -o $(SOURCE_DIR)/tests/heapSort
 	./src/tests/heapSort
 	rm $(SOURCE_DIR)/tests/heapSort
-	
-Clean: 
-	rm $(SOURCE_DIR)/tests/heap
-	rm $(SOURCE_DIR)/tests/insertion
-	rm $(SOURCE_DIR)/tests/heapSort
 
-
+Sorting:
+	$(CC) $(SOURCE_DIR)/tests/Sorting/Sorting.c  $(SOURCE_C) -o $(SOURCE_DIR)/tests/Sorting/Sorting
+	./src/tests/Sorting/Sorting
+	rm $(SOURCE_DIR)/tests/Sorting/Sorting
