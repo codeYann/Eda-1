@@ -4,8 +4,8 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define A 100000
-#define NAME "src/tests/Sorting/A.txt"
+#define LENGTH 0 // Passe o length correto
+#define NAME "src/tests/Sorting/file.txt"  // Passe o arquivo certo
 
 unsigned long* GenerateList(char* name, unsigned long size) {
   unsigned long* list = (unsigned long*) malloc(sizeof(unsigned long) * size);
@@ -24,13 +24,6 @@ unsigned long* GenerateList(char* name, unsigned long size) {
   return list;
 }
 
-void show(unsigned long* list, unsigned long n) {
-  for(unsigned long i = 0; i < n; i++) {
-    printf("%lu\n", list[i]);
-  }
-}
-
-
 void Exec(int option, unsigned long* list, unsigned long n) {
   if(option == 1) {
     clock_t start, end;
@@ -44,7 +37,6 @@ void Exec(int option, unsigned long* list, unsigned long n) {
     unsigned long* h = HeapSort(list, n);
     end = clock();
     printf("%.2f\n", (float)(end - start)/ CLOCKS_PER_SEC); 
-    show(h, n);
   }
 }
 
@@ -55,11 +47,11 @@ int main(int argc, char** argv) {
   scanf("%d", &option);
 
   if(option == 1) {
-    unsigned long* list = GenerateList(NAME, A);
-    Exec(option, list, A);
+    unsigned long* list = GenerateList(NAME, LENGTH);
+    Exec(option, list, LENGTH);
   } else {
-    unsigned long* list = GenerateList(NAME, A);
-    Exec(option, list, A);
+    unsigned long* list = GenerateList(NAME, LENGTH);
+    Exec(option, list, LENGTH);
   }
 
   return 0;
