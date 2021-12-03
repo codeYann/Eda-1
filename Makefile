@@ -21,3 +21,11 @@ Sorting:
 	$(CC) $(SOURCE_DIR)/tests/Sorting/Sorting.c  $(SOURCE_C) -o $(SOURCE_DIR)/tests/Sorting/Sorting
 	./src/tests/Sorting/Sorting
 	rm $(SOURCE_DIR)/tests/Sorting/Sorting
+
+
+HashTable:
+	$(CC) $(SOURCE_DIR)/tests/Hashtable_test.c $(SOURCE_C) -o $(SOURCE_DIR)/tests/hash -lm
+	./src/tests/hash
+	rm $(SOURCE_DIR)/tests/hash
+
+
