@@ -2,21 +2,23 @@
 #define HASHTABLE
 
 typedef struct node {
-  int key;
+  unsigned long key;
   char *value;
   struct node *next;
 } Node;
 
 typedef struct {
-  int capacity;
+  unsigned long capacity;
+  unsigned long collision;
   Node** list;
 } HashTable;
 
-HashTable* CreateHashTable(int capacity);
-void Append(HashTable* hashTable, int key, char *value, unsigned int(*HashMethod)(int key, int capacity));
-char* Search(HashTable* hashTable, int key, unsigned int(*HashMethod)(int key, int capacity));
+HashTable* CreateHashTable(unsigned long capacity);
+void Append(HashTable* hashTable, unsigned long key, char *value, unsigned long(*HashMethod)(unsigned long key, unsigned long capacity));
+char* Search(HashTable* hashTable, unsigned long key, unsigned long(*HashMethod)(unsigned long key, unsigned long capacity));
 
-unsigned int ModMethod(int key, int m);
-unsigned int MultiplicationMethod(int key, int m);
+unsigned long ModMethod(unsigned long key, unsigned long m);
+unsigned long MultiplicationMethod(unsigned long key, unsigned long m);
+unsigned long FoldMethod(unsigned long key, unsigned long m);
 
 #endif
