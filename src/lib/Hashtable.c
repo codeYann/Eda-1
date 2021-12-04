@@ -9,11 +9,11 @@ unsigned int ModMethod(int key, int m) {
 
 unsigned int MultiplicationMethod(int key, int m) {
   const float A = 0.61231;
-  return (m * fmodf(key*A, 1));
+  return (m * fmodf(key * A, 1));
 }
 
 Node *CreateNode(int key, char *value) {
-  Node *node = (Node *)malloc(sizeof(Node));
+  Node* node = (Node*) malloc(sizeof(Node));
   node->value = value;
   node->key = key;
   node->next = NULL;
@@ -27,9 +27,9 @@ HashTable* CreateHashTable(int capacity) {
   return hashTable;
 }
 
-void Append(HashTable *hashTable, int key, char *value, unsigned int(*HashMethod)(int key, int capacity)) {
+void Append(HashTable *hashTable, int key, char *value, unsigned int (*HashMethod)(int key, int capacity)) {
   unsigned int index = (*HashMethod)(key, hashTable->capacity);
-  Node *node = hashTable->list[index];
+  Node* node = hashTable->list[index];
 
   if (node == NULL) {
     hashTable->list[index] = CreateNode(key, value);
@@ -44,15 +44,14 @@ void Append(HashTable *hashTable, int key, char *value, unsigned int(*HashMethod
   }
 }
 
-char* Search(HashTable* hashTable, int key, unsigned int(*HashMethod)(int key, int capacity)) {
+char *Search(HashTable *hashTable, int key, unsigned int (*HashMethod)(int key, int capacity)) {
   unsigned int index = (*HashMethod)(key, hashTable->capacity);
   Node* node = hashTable->list[index];
   while (node != NULL) {
     if (node->key == key) {
       return node->value;
-    } 
+    }
     node = node->next;
-  } 
+  }
   return "";
 }
-
