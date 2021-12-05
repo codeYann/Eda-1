@@ -16,7 +16,7 @@ unsigned long* GenerateList(char* name, unsigned long size) {
     exit(1);
   }
 
-  for(unsigned long j = 0; j  < size; j++) {
+  for (unsigned long j = 0; j  < size; j++) {
     fscanf(file, "%lu", &list[j]);
   };
 
@@ -24,19 +24,19 @@ unsigned long* GenerateList(char* name, unsigned long size) {
   return list;
 }
 
-void Exec(int option, unsigned long* list, unsigned long n) {
-  if(option == 1) {
+void Exec(int option, unsigned long *list, unsigned long n) {
+  if (option == 1) {
     clock_t start, end;
     start = clock();
     InsertionSort(list, n);
     end = clock();
-    printf("%.2f\n", (float)(end - start)/ CLOCKS_PER_SEC); 
+    printf("%.2f\n", (float)(end - start) / CLOCKS_PER_SEC);
   } else {
     clock_t start, end;
     start = clock();
     unsigned long* h = HeapSort(list, n);
     end = clock();
-    printf("%.2f\n", (float)(end - start)/ CLOCKS_PER_SEC); 
+    printf("%.2f\n", (float)(end - start) / CLOCKS_PER_SEC);
   }
 }
 
