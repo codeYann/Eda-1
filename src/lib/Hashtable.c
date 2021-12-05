@@ -8,7 +8,7 @@ unsigned long ModMethod(unsigned long key, unsigned long m) {
 }
 
 unsigned long MultiplicationMethod(unsigned long key, unsigned long m) {
-  const float A = 0.61231;
+  const float A = 0.2251;
   return (m * fmodf(key * A, 1));
 }
 
