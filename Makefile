@@ -18,7 +18,7 @@ HeapSort:
 	rm $(SOURCE_DIR)/tests/heapSort
 
 Sorting:
-	$(CC) $(SOURCE_DIR)/tests/Sorting/Sorting.c  $(SOURCE_C) -o $(SOURCE_DIR)/tests/Sorting/Sorting
+	$(CC) $(SOURCE_DIR)/tests/Sorting/Sorting.c  $(SOURCE_C) -o $(SOURCE_DIR)/tests/Sorting/Sorting -lm
 	./src/tests/Sorting/Sorting
 	rm $(SOURCE_DIR)/tests/Sorting/Sorting
 
@@ -27,5 +27,11 @@ HashTable:
 	$(CC) $(SOURCE_DIR)/tests/Hashtable_test.c $(SOURCE_C) -o $(SOURCE_DIR)/tests/hash -lm
 	./src/tests/hash
 	rm $(SOURCE_DIR)/tests/hash
+
+Hashing:
+	$(CC) $(SOURCE_DIR)/tests/Hashing/Hashing.c $(SOURCE_C) -o $(SOURCE_DIR)/tests/Hashing/hash -lm
+	./src/tests/Hashing/hash
+	rm $(SOURCE_DIR)/tests/Hashing/hash
+
 
 
