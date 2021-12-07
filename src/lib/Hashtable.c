@@ -3,6 +3,23 @@
 #include <stdio.h>
 #include <math.h>
 
+unsigned long sumWithOutCarry(unsigned long a, unsigned long b) {
+  unsigned long res = a + b;
+  if (res >= 10) {
+    res %=  10;
+  } 
+  return res;
+}
+
+unsigned long digitOccurrence(unsigned long key) {
+  unsigned long T = 0; 
+  while (key != 0) {
+    key /= 10;
+    T += 1;
+  } 
+  return T;
+}
+
 unsigned long ModMethod(unsigned long key, unsigned long m) {
   return key % m;
 }
@@ -13,7 +30,35 @@ unsigned long MultiplicationMethod(unsigned long key, unsigned long m) {
 }
 
 unsigned long FoldMethod(unsigned long key, unsigned long m) {
-  return 1;
+  int* digitsList;
+  unsigned long digits = digitOccurrence(key);
+
+  if (digits % 2 == 1) {
+    digitsList = malloc(sizeof(int) * digits + 1);
+  } else {
+    digitsList = malloc(sizeof(int) * digits);
+  }
+
+  unsigned long j = digits; 
+  unsigned long u = 0;
+
+  while (key != 0) {
+    u = key % 10;
+    digitsList[j - 1] = u;
+    key /= 10;
+    j--;
+  }
+ 
+  for (unsigned long i = 2; i < digits; i += 2) {
+    j = 0;
+    u = digitsList[j + 1];
+    digitsList[j + 1] = sumWithOutCarry(digitsList[j], digitsList[i + 1]);
+    j += 1;
+    digitsList[j - 1] = sumWithOutCarry(u, digitsList[i]);
+  }
+
+  u = digitsList[0] * 10 + digitsList[1];
+  return u;
 }
 
 Node *CreateNode(unsigned long key, char *value) {
