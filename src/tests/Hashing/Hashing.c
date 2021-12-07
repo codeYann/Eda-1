@@ -24,7 +24,7 @@ unsigned long *GenerateList(char *name, unsigned long size) {
 }
 
 void Exec(int option) {
-  HashTable* hash = CreateHashTable(SIZE);
+  HashTable *hash = CreateHashTable(SIZE);
   unsigned long *list = GenerateList(NAME, LENGTH);
   switch (option) {
   case 1: {
@@ -42,9 +42,9 @@ void Exec(int option) {
   }
   break;
   case 3: {
-            for (unsigned long j = 0; j < LENGTH; j++) {
-              Append(hash, list[j], "Yan", &FoldMethod);
-            } 
+    for (unsigned long j = 0; j < LENGTH; j++) {
+      Append(hash, list[j], "Yan", &FoldMethod);
+    }
     printf("Número de colisões %lu", hash->collision);
   }
   break;

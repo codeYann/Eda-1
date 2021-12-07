@@ -13,6 +13,7 @@ O trabalho consiste em um conjunto de implmentações de algoritmos, assim como,
 | [Heap](https://github.com/codeYann/Eda-1/blob/main/src/lib/heap.c)               | Ok     |
 | [HeapSort](https://github.com/codeYann/Eda-1/blob/main/src/lib/heapSort.c)       | Ok     |
 | [InsertionSort](https://github.com/codeYann/Eda-1/blob/main/src/lib/insertion.c) | Ok     |
+| [Hash Table](https://github.com/codeYann/Eda-1/blob/main/src/lib/Hashtable.c)    | Ok     |
 
 ## License
 
