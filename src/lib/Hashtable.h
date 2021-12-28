@@ -1,13 +1,15 @@
 #ifndef HASHTABLE
 #define HASHTABLE
 
-typedef struct node {
+typedef struct node 
+{
   unsigned long key;
   char *value;
   struct node *next;
 } Node;
 
-typedef struct {
+typedef struct 
+{
   unsigned long capacity;
   unsigned long collision;
   Node** list;

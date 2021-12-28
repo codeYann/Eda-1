@@ -3,7 +3,8 @@
 #include <stdio.h>
 #include <math.h>
 
-unsigned long sumWithOutCarry(unsigned long a, unsigned long b) {
+unsigned long sumWithOutCarry(unsigned long a, unsigned long b) 
+{
   unsigned long res = a + b;
   if (res >= 10) {
     res %=  10;
@@ -11,7 +12,8 @@ unsigned long sumWithOutCarry(unsigned long a, unsigned long b) {
   return res;
 }
 
-unsigned long digitOccurrence(unsigned long key) {
+unsigned long digitOccurrence(unsigned long key) 
+{
   unsigned long T = 0; 
   while (key != 0) {
     key /= 10;
@@ -20,16 +22,19 @@ unsigned long digitOccurrence(unsigned long key) {
   return T;
 }
 
-unsigned long ModMethod(unsigned long key, unsigned long m) {
+unsigned long ModMethod(unsigned long key, unsigned long m)
+{
   return key % m;
 }
 
-unsigned long MultiplicationMethod(unsigned long key, unsigned long m) {
+unsigned long MultiplicationMethod(unsigned long key, unsigned long m) 
+{
   const float A = 0.2251;
   return (m * fmodf(key * A, 1));
 }
 
-unsigned long FoldMethod(unsigned long key, unsigned long m) {
+unsigned long FoldMethod(unsigned long key, unsigned long m) 
+{
   int* digitsList;
   unsigned long digits = digitOccurrence(key);
 
@@ -61,7 +66,8 @@ unsigned long FoldMethod(unsigned long key, unsigned long m) {
   return u;
 }
 
-Node *CreateNode(unsigned long key, char *value) {
+Node *CreateNode(unsigned long key, char *value) 
+{
   Node* node = (Node*) malloc(sizeof(Node));
   node->value = value;
   node->key = key;
@@ -69,7 +75,8 @@ Node *CreateNode(unsigned long key, char *value) {
   return node;
 }
 
-HashTable* CreateHashTable(unsigned long capacity) {
+HashTable* CreateHashTable(unsigned long capacity) 
+{
   HashTable* hashTable = (HashTable*) malloc(sizeof(HashTable));
   hashTable->capacity = capacity;
   hashTable->list = (Node**) malloc(sizeof(Node) * capacity);
@@ -77,7 +84,8 @@ HashTable* CreateHashTable(unsigned long capacity) {
   return hashTable;
 }
 
-void Append(HashTable *hashTable, unsigned long key, char *value, unsigned long (*HashMethod)(unsigned long key, unsigned long capacity)) {
+void Append(HashTable *hashTable, unsigned long key, char *value, unsigned long (*HashMethod)(unsigned long key, unsigned long capacity)) 
+{
   unsigned long index = (*HashMethod)(key, hashTable->capacity);
   Node* node = hashTable->list[index];
 
@@ -95,7 +103,8 @@ void Append(HashTable *hashTable, unsigned long key, char *value, unsigned long 
   }
 }
 
-char *Search(HashTable *hashTable, unsigned long key, unsigned long (*HashMethod)(unsigned long key, unsigned long capacity)) {
+char *Search(HashTable *hashTable, unsigned long key, unsigned long (*HashMethod)(unsigned long key, unsigned long capacity)) 
+{
   unsigned long index = (*HashMethod)(key, hashTable->capacity);
   Node* node = hashTable->list[index];
   while (node != NULL) {
