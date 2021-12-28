@@ -2,19 +2,23 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-unsigned long GetParent(unsigned long index) {
+unsigned long GetParent(unsigned long index) 
+{
   return (index / 2);
 }
 
-unsigned long LeftChildren(unsigned long index) {
+unsigned long LeftChildren(unsigned long index) 
+{
   return (2 * index);
 }
 
-unsigned long RightChildren(unsigned long index) {
+unsigned long RightChildren(unsigned long index) 
+{
   return (2 * index) + 1;
 }
 
-Heap *CreateHeap(unsigned long capacity) {
+Heap *CreateHeap(unsigned long capacity) 
+{
   Heap *heap = (Heap*) malloc(sizeof(Heap));
   heap->length = 0;
   heap->capacity = capacity;
@@ -22,7 +26,8 @@ Heap *CreateHeap(unsigned long capacity) {
   return heap;
 }
 
-void maxHeapifyUp(Heap *heap, unsigned long index) {
+void maxHeapifyUp(Heap *heap, unsigned long index) 
+{
   unsigned long parent = GetParent(index);
   if (parent > 0) {
     if (heap->list[index] > heap->list[parent]) {
@@ -34,7 +39,8 @@ void maxHeapifyUp(Heap *heap, unsigned long index) {
   }
 }
 
-void maxHeapifyDown(Heap *heap, unsigned long index) { 
+void maxHeapifyDown(Heap *heap, unsigned long index) 
+{ 
   unsigned long lastIndex = heap->length;
   unsigned long left = LeftChildren(index), right = RightChildren(index);
   unsigned long choice = 0;
@@ -62,7 +68,8 @@ void maxHeapifyDown(Heap *heap, unsigned long index) {
   }
 }
 
-void Insert(Heap *heap, unsigned long element) {
+void Insert(Heap *heap, unsigned long element) 
+{
   if (heap->length < heap->capacity) {
     heap->length += 1;
     heap->list[heap->length] = element;
@@ -70,7 +77,8 @@ void Insert(Heap *heap, unsigned long element) {
   }
 }
 
-unsigned long Remove(Heap* heap) {
+unsigned long Remove(Heap* heap) 
+{
   if(heap->length > 0) {
     unsigned long n = heap->length;
     unsigned long max = heap->list[1];
@@ -83,7 +91,8 @@ unsigned long Remove(Heap* heap) {
   }
 }
 
-Heap* Heapify(unsigned long* array, unsigned long n) {
+Heap* Heapify(unsigned long* array, unsigned long n) 
+{
   Heap* heap = malloc(sizeof(Heap));
   heap->capacity = n * 2;
   heap->length = n;

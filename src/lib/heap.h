@@ -1,7 +1,8 @@
 #ifndef HEAP
 #define HEAP
 
-typedef struct {
+typedef struct 
+{
   unsigned long *list;
   unsigned long capacity;
   unsigned long length;
