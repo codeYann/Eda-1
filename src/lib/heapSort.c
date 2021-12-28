@@ -3,10 +3,11 @@
 #include <stdio.h>
 
 
-unsigned long* HeapSort(unsigned long* list, unsigned long n) {
-  Heap* A = Heapify(list, n);
+unsigned long *HeapSort(unsigned long *list, unsigned long n) 
+{
+  Heap *A = Heapify(list, n);
 
-  for(unsigned long i = A->length; i >= 1; i--) {
+  for (unsigned long i = A->length; i >= 1; i--) {
     unsigned long temp = A->list[1];
     A->list[1] = A->list[i];
     A->list[i] = temp;
