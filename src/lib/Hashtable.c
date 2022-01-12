@@ -35,7 +35,7 @@ unsigned long MultiplicationMethod(unsigned long key, unsigned long m)
 
 unsigned long FoldMethod(unsigned long key, unsigned long m) 
 {
-  int* digitsList;
+  int *digitsList;
   unsigned long digits = digitOccurrence(key);
 
   if (digits % 2 == 1) {
@@ -68,7 +68,7 @@ unsigned long FoldMethod(unsigned long key, unsigned long m)
 
 Node *CreateNode(unsigned long key, char *value) 
 {
-  Node* node = (Node*) malloc(sizeof(Node));
+  Node *node = (Node*) malloc(sizeof(Node));
   node->value = value;
   node->key = key;
   node->next = NULL;
@@ -77,7 +77,7 @@ Node *CreateNode(unsigned long key, char *value)
 
 HashTable* CreateHashTable(unsigned long capacity) 
 {
-  HashTable* hashTable = (HashTable*) malloc(sizeof(HashTable));
+  HashTable *hashTable = (HashTable*) malloc(sizeof(HashTable));
   hashTable->capacity = capacity;
   hashTable->list = (Node**) malloc(sizeof(Node) * capacity);
   hashTable->collision = 0;
@@ -87,7 +87,7 @@ HashTable* CreateHashTable(unsigned long capacity)
 void Append(HashTable *hashTable, unsigned long key, char *value, unsigned long (*HashMethod)(unsigned long key, unsigned long capacity)) 
 {
   unsigned long index = (*HashMethod)(key, hashTable->capacity);
-  Node* node = hashTable->list[index];
+  Node *node = hashTable->list[index];
 
   if (node == NULL) {
     hashTable->list[index] = CreateNode(key, value);
@@ -106,7 +106,7 @@ void Append(HashTable *hashTable, unsigned long key, char *value, unsigned long 
 char *Search(HashTable *hashTable, unsigned long key, unsigned long (*HashMethod)(unsigned long key, unsigned long capacity)) 
 {
   unsigned long index = (*HashMethod)(key, hashTable->capacity);
-  Node* node = hashTable->list[index];
+  Node *node = hashTable->list[index];
   while (node != NULL) {
     if (node->key == key) {
       return node->value;
