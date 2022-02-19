@@ -1,52 +1,40 @@
 #include "heap.h"
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
-unsigned long GetParent(unsigned long index) 
-{
-  return (index / 2);
-}
+unsigned long get_parent(unsigned long index) { return (index / 2); }
 
-unsigned long LeftChildren(unsigned long index) 
-{
-  return (2 * index);
-}
+unsigned long left_children(unsigned long index) { return (2 * index); }
 
-unsigned long RightChildren(unsigned long index) 
-{
-  return (2 * index) + 1;
-}
+unsigned long right_children(unsigned long index) { return (2 * index) + 1; }
 
-Heap *CreateHeap(unsigned long capacity) 
-{
-  Heap *heap = (Heap*) malloc(sizeof(Heap));
+Heap *create_heap(unsigned long capacity) {
+  Heap *heap = (Heap *)malloc(sizeof(Heap));
   heap->length = 0;
   heap->capacity = capacity;
-  heap->list = (unsigned long*) malloc(capacity * sizeof(unsigned long));
+  heap->list = (unsigned long *)malloc(capacity * sizeof(unsigned long));
   return heap;
 }
 
-void maxHeapifyUp(Heap *heap, unsigned long index) 
-{
-  unsigned long parent = GetParent(index);
+void max_heapify_up(Heap *heap, unsigned long index) {
+  unsigned long parent = get_parent(index);
   if (parent > 0) {
     if (heap->list[index] > heap->list[parent]) {
       unsigned long temp = heap->list[index];
       heap->list[index] = heap->list[parent];
       heap->list[parent] = temp;
-      maxHeapifyUp(heap, parent);
+      max_heapify_up(heap, parent);
     }
   }
 }
 
-void maxHeapifyDown(Heap *heap, unsigned long index) 
-{ 
-  unsigned long lastIndex = heap->length;
-  unsigned long left = LeftChildren(index), right = RightChildren(index);
+void max_heapify_down(Heap *heap, unsigned long index) {
+  unsigned long last_index = heap->length;
+  unsigned long left = left_children(index), right = right_children(index);
   unsigned long choice = 0;
 
-  while (left <= lastIndex) {
-    if (left == lastIndex) {
+  while (left <= last_index) {
+    if (left == last_index) {
       choice = left;
     } else if (heap->list[left] > heap->list[right]) {
       choice = left;
@@ -60,48 +48,45 @@ void maxHeapifyDown(Heap *heap, unsigned long index)
       heap->list[choice] = temp;
 
       index = choice;
-      left = LeftChildren(index); 
-      right = RightChildren(index);
+      left = left_children(index);
+      right = right_children(index);
     } else {
       return;
     }
   }
 }
 
-void Insert(Heap *heap, unsigned long element) 
-{
+void Insert(Heap *heap, unsigned long element) {
   if (heap->length < heap->capacity) {
     heap->length += 1;
     heap->list[heap->length] = element;
-    maxHeapifyUp(heap, heap->length);
+    max_heapify_up(heap, heap->length);
   }
 }
 
-unsigned long Remove(Heap* heap) 
-{
-  if(heap->length > 0) {
+unsigned long Remove(Heap *heap) {
+  if (heap->length > 0) {
     unsigned long n = heap->length;
     unsigned long max = heap->list[1];
     heap->list[1] = heap->list[n - 1];
     heap->length -= 1;
-    maxHeapifyDown(heap, 1);
+    max_heapify_down(heap, 1);
     return max;
   } else {
     return -1;
   }
 }
 
-Heap* Heapify(unsigned long* array, unsigned long n) 
-{
-  Heap* heap = malloc(sizeof(Heap));
+Heap *Heapify(unsigned long *array, unsigned long n) {
+  Heap *heap = (Heap *)malloc(sizeof(Heap));
   heap->capacity = n * 2;
   heap->length = n;
   (heap->list) += 1;
   heap->list = array;
   (heap->list) -= 1;
-  
-  for(unsigned long i = (heap->length/2); i >= 1; i--) {
-    maxHeapifyDown(heap, i);
+
+  for (unsigned long i = (heap->length / 2); i >= 1; i--) {
+    max_heapify_down(heap, i);
   }
 
   return heap;
