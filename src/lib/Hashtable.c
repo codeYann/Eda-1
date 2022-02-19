@@ -77,7 +77,7 @@ HashTable *create_hash_table(unsigned long capacity) {
 
 void Append(HashTable *hash_table, unsigned long key, char *value,
             unsigned long (*hash_method)(unsigned long key,
-                                        unsigned long capacity)) {
+                                         unsigned long capacity)) {
   unsigned long index = (*hash_method)(key, hash_table->capacity);
   Node *node = hash_table->list[index];
 
@@ -97,7 +97,7 @@ void Append(HashTable *hash_table, unsigned long key, char *value,
 
 char *Search(HashTable *hash_table, unsigned long key,
              unsigned long (*hash_method)(unsigned long key,
-                                         unsigned long capacity)) {
+                                          unsigned long capacity)) {
   unsigned long index = (*hash_method)(key, hash_table->capacity);
   Node *node = hash_table->list[index];
   while (node != NULL) {
