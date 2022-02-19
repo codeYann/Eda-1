@@ -1,6 +1,6 @@
 #ifndef INSERTION
 #define INSERTION
 
-void InsertionSort(unsigned long *list, unsigned long n);
+void insertion_sort(unsigned long *list, unsigned long n);
 
 #endif

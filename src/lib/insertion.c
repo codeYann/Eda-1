@@ -1,6 +1,6 @@
 #include "insertion.h"
 
-void InsertionSort(unsigned long *list, unsigned long n) 
+void insertion_sort(unsigned long *list, unsigned long n) 
 {
   for (unsigned long j = 1; j < n; j++) {
     unsigned long key = list[j];
